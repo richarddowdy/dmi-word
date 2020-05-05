@@ -2,6 +2,7 @@
 
 const express = require('express');
 const logger = require('./logger');
+const bodyParser = require('body-parser');
 
 const argv = require('./argv');
 const port = require('./port');
@@ -12,10 +13,14 @@ const ngrok =
     ? require('ngrok')
     : false;
 const { resolve } = require('path');
+const stringsRoutes = require('./routes/strings');
 const app = express();
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
+app.use(bodyParser.json());
+
+app.use('/api/strings', stringsRoutes);
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
@@ -53,4 +58,22 @@ app.listen(port, host, async err => {
   } else {
     logger.appStarted(port, prettyHost);
   }
+});
+
+/** 404 Not Found handler. */
+
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+});
+
+/** Generic error handler. */
+
+app.use((err, req, res, next) => {
+  if (err.stack) console.error(err.stack);
+
+  res.status(err.status || 500).json({
+    message: err.message,
+  });
 });
