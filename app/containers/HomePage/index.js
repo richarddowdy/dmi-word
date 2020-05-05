@@ -11,13 +11,26 @@ import messages from './messages';
 
 // import CenteredSection from './CenteredSection';
 import Section from './Section';
+import StringList from '../../components/StringList/index';
+import Header from '../../components/Header';
+import H1 from '../../components/H1';
+import LoadingSpinner from '../../components/LoadingSpinner';
 
 export default function HomePage() {
+  const loadingTrue = false;
+
+  const strings = ['well', 'iss', 'this', 'working'];
   return (
-    <Section>
-      <h1>
-        <FormattedMessage {...messages.header} />
-      </h1>
-    </Section>
+    <>
+      <Header>
+        <H1>
+          <FormattedMessage {...messages.header} />
+        </H1>
+      </Header>
+      <Section>
+        <LoadingSpinner />
+        <StringList loading={loadingTrue} strings={strings} />
+      </Section>
+    </>
   );
 }

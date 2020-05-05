@@ -13,12 +13,15 @@ import { Switch, Route } from 'react-router-dom';
 import HomePage from 'containers/HomePage/Loadable';
 import FormPage from 'containers/FormPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
+import Navbar from './Navbar';
 
 import GlobalStyle from '../../global-styles';
+import '@fortawesome/fontawesome-free/css/all.css';
 
 export default function App() {
   return (
     <div>
+      <Navbar />
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route exact path="/new" component={FormPage} />
