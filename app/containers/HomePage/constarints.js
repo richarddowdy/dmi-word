@@ -1,0 +1,1 @@
+export const RECEIVE_API_STRINGS = 'word-dmi/Home/RECEIVE_API_STRINGS'
