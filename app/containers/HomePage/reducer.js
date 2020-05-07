@@ -7,9 +7,11 @@ export const initialState = {
 const homeReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_API_STRINGS:
-      return [...action.strings]
+      return [...action.strings];
 
     default:
       return state;
   }
-}
+};
+
+export default homeReducer;

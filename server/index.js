@@ -14,6 +14,8 @@ const ngrok =
     : false;
 const { resolve } = require('path');
 const stringsRoutes = require('./routes/strings');
+const cors = require('cors');
+
 const app = express();
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
@@ -21,6 +23,7 @@ const app = express();
 app.use(bodyParser.json()); // allows me to parse the body of a reqest as json
 
 app.use('/api/strings', stringsRoutes); // connects the GET and POST endpoints for 'strings'
+app.use(cors());
 
 // In production we need to pass these values in instead of relying on webpack
 setup(app, {
