@@ -3,7 +3,8 @@
 import { REQUEST_API_STRINGS, RECEIVE_API_STRINGS } from './constraints';
 
 export const requestApiStrings = () => {
-  // console.log("action");
+  console.log("action");
+  console.log({type: REQUEST_API_STRINGS})
   return { type: REQUEST_API_STRINGS };
 };
 export const receiveApiStrings = strings => ({

@@ -5,15 +5,19 @@
  *
  */
 
-import React, { useEffect } from 'react';
+import React, { useEffect, memo } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
+import { connect, useDispatch } from 'react-redux';
 import { compose, bindActionCreators } from 'redux';
 import { FormattedMessage } from 'react-intl';
 import { createStructuredSelector } from 'reselect';
 import { makeSelectStrings, makeSelectLoading } from 'containers/App/selectors';
 import { useInjectReducer } from 'utils/injectReducer';
 import { useInjectSaga } from 'utils/injectSaga';
+
+import injectSaga from 'utils/injectSaga';
+import { DAEMON } from 'utils/constants';
+import saga from './saga';
 
 import messages from './messages';
 
@@ -26,22 +30,24 @@ import LoadingSpinner from '../../components/LoadingSpinner';
 
 import { requestApiStrings } from './actions';
 import reducer from './reducer';
-import saga from './saga';
 
 const key = 'home';
 
-function HomePage({ strings, loading }) {
-
-  useInjectReducer({ key, reducer });
-  useInjectSaga({ key, saga });
+function HomePage({ strings, loading, requestApiStrings }) {
+  // useInjectReducer({ key, reducer });
+  // useInjectSaga({ key, saga });
 
   const loadingTrue = false;
 
   useEffect(() => {
+    async function getStrings() {
+      console.log("calling API")
+      requestApiStrings();
+    }
     console.log("running effect");
     if (!strings) {
       console.log("doing this thing");
-      requestApiStrings();
+      getStrings();
       console.log(strings);
     }
   },[strings]);
@@ -77,13 +83,21 @@ export const mapDispatchToProps = dispatch => {
   return bindActionCreators({ requestApiStrings }, dispatch);
 };
 
-// export default HomePage;
-export default connect(
+
+const withConnect = connect(
   mapStateToProps,
   mapDispatchToProps,
+);
+
+// export default HomePage;
+export default compose(
+  withConnect,
+  memo,
 )(HomePage);
 
-// const withConnect = connect(
+// const withSaga = injectSaga({ key: 'HomePage', saga });
+
+// export default compose(
 //   mapStateToProps,
-//   mapDispatchToProps,
-// )
+//   withSaga,
+// )(HomePage)

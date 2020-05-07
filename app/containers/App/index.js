@@ -11,6 +11,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import HomePage from 'containers/HomePage/Loadable';
+import Home from 'containers/Home/Loadable';
 import FormPage from 'containers/FormPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 import Navbar from './Navbar';
@@ -23,7 +24,7 @@ export default function App() {
     <div>
       <Navbar />
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/new" component={FormPage} />
         <Route component={NotFoundPage} />
       </Switch>

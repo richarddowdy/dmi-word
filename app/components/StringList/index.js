@@ -1,20 +1,18 @@
 import React from 'react';
 
-import LoadingSpinner from '../LoadingSpinner/index';
+import Ul from '../Ul/index';
+import ListItem from '../ListItem/index';
 
 function StringList({ strings, loading, error }) {
-  if (loading) {
-    return <LoadingSpinner />;
-  }
-  if (strings) {
-    return (
-      <>
-        {strings.map(str => {
-          return <p>{str}</p>;
+  return (
+    <>
+      <Ul>
+        {strings.map((str, idx) => {
+          return <ListItem className='text-primary' key={idx}>{str}</ListItem>;
         })}
-      </>
-    );
-  }
+      </Ul>
+    </>
+  );
 }
 
 export default StringList;
