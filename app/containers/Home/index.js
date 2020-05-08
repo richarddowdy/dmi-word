@@ -31,9 +31,7 @@ export function Home({ strings, onPageLoad }) {
   useInjectSaga({ key: 'home', saga });
 
   useEffect(() => {
-    if (!strings) {
-      onPageLoad();
-    }
+    onPageLoad();
   }, []);
 
   return (
