@@ -6,7 +6,8 @@ import { initialState } from './reducer';
  */
 
 const selectForm = state => state.form || initialState;
-
+const selectError = state => state.form || initialState;
+const selectSuccess = state => state.form || initialState;
 /**
  * Other specific selectors
  */
@@ -21,5 +22,17 @@ const makeSelectForm = () =>
     formState => formState.newString,
   );
 
-export default makeSelectForm;
-export { selectForm };
+const makeSelectError = () =>
+  createSelector(
+    selectError,
+    formState => formState.error,
+  );
+
+const makeSelectSuccess = () =>
+  createSelector(
+    selectSuccess,
+    formState => formState.success,
+  );
+
+// export default makeSelectForm;
+export { selectForm, selectError, makeSelectError, makeSelectForm, makeSelectSuccess };

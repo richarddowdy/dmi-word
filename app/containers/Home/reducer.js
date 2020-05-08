@@ -13,7 +13,6 @@ const homeReducer = (state = initialState, action) =>
   produce(state, draft => {
     switch (action.type) {
       case LOAD_STRINGS_SUCCESS:
-        console.log("saving", action.strings)
         draft.strings = action.strings;
         break;
     }

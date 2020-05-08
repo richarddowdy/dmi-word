@@ -4,9 +4,13 @@
  *
  */
 import produce from 'immer';
-import { CHANGE_INPUT, ADD_NEW_STRING } from './constants';
+import { CHANGE_INPUT, ADD_STRINGS_FAIL, ADD_STRINGS_SUCCESS } from './constants';
 
-export const initialState = { newString: ""};
+export const initialState = {
+  newString: '',
+  error: false,
+  success: false,
+};
 
 /* eslint-disable default-case, no-param-reassign */
 const formReducer = (state = initialState, action) =>
@@ -14,6 +18,14 @@ const formReducer = (state = initialState, action) =>
     switch (action.type) {
       case CHANGE_INPUT:
         draft.newString = action.newString;
+        break;
+
+      case ADD_STRINGS_FAIL:
+        draft.error = action.error;
+        break;
+
+      case ADD_STRINGS_SUCCESS:
+        draft.success = action.success;
         break;
     }
   });

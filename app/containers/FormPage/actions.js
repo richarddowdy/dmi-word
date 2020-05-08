@@ -4,7 +4,7 @@
  *
  */
 
-import { CHANGE_INPUT, ADD_NEW_STRING, LOAD_STRINGS_SUCCESS } from './constants';
+import { CHANGE_INPUT, ADD_NEW_STRING, LOAD_STRINGS_SUCCESS, ADD_STRINGS_SUCCESS, ADD_STRINGS_FAIL } from './constants';
 
 export function changeInput(newString) {
   return {
@@ -20,9 +20,23 @@ export function addNewString(newString) {
   };
 }
 
-export function stringAdded(stringsArray) {
+export function stringAdd(stringsArray) {
   return {
     type: LOAD_STRINGS_SUCCESS,
     stringsArray,
+  };
+}
+
+export function stringFailed(error) {
+  return {
+    type: ADD_STRINGS_FAIL,
+    error,
+  };
+}
+
+export function stringSuccess(success) {
+  return {
+    type: ADD_STRINGS_SUCCESS,
+    success,
   };
 }
