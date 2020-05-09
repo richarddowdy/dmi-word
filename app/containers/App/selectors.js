@@ -11,11 +11,17 @@ const makeSelectStrings = () =>
     globalState => globalState.strings,
   );
 
-const makeSelectLoading = () =>
-  createSelector(
-    selectGlobal,
-    globalState => globalState.loading,
-  );
+// const makeSelectError = () =>
+//   createSelector(
+//     selectGlobal,
+//     globalState => globalState.error,
+//   );
+
+// const makeSelectSuccess = () =>
+//   createSelector(
+//     selectGlobal,
+//     globalState => globalState.success,
+//   );
 
 const makeSelectLocation = () =>
   createSelector(
@@ -23,4 +29,5 @@ const makeSelectLocation = () =>
     routerState => routerState.location,
   );
 
-export { makeSelectStrings, makeSelectLoading, makeSelectLocation };
+export { makeSelectStrings, makeSelectLocation };
+// export { makeSelectStrings, makeSelectError, makeSelectSuccess, makeSelectLocation };

@@ -9,13 +9,23 @@
 import React from 'react';
 import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
+import { Provider } from 'react-redux';
+import configureStore from '../../../configureStore';
+import { browserHistory } from 'react-router-dom';
+
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 
 import { Home } from '../index';
 import { DEFAULT_LOCALE } from '../../../i18n';
 
 describe('<Home />', () => {
-  it('Expect to not log errors in console', () => {
+  let store;
+
+  beforeAll(() => {
+    store = configureStore({}, browserHistory);
+  });
+
+  it.only('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     const dispatch = jest.fn();
     render(

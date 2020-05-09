@@ -4,7 +4,13 @@
  *
  */
 
-import { CHANGE_INPUT, ADD_NEW_STRING, LOAD_STRINGS_SUCCESS, ADD_STRINGS_SUCCESS, ADD_STRINGS_FAIL } from './constants';
+import {
+  CHANGE_INPUT,
+  ADD_NEW_STRING,
+  LOAD_STRINGS_SUCCESS,
+  ADD_STRINGS_SUCCESS,
+  ADD_STRINGS_FAIL,
+} from './constants';
 
 export function changeInput(newString) {
   return {

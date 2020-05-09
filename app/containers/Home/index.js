@@ -15,6 +15,7 @@ import { compose } from 'redux';
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import { makeSelectStrings } from './selectors';
+// import { makeSelectStrings } from '../App/selectors';
 import { loadStrings } from './actions';
 import reducer from './reducer';
 import saga from './saga';

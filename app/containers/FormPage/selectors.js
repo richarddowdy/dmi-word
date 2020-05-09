@@ -35,4 +35,5 @@ const makeSelectSuccess = () =>
   );
 
 // export default makeSelectForm;
+// export { selectForm, makeSelectForm };
 export { selectForm, selectError, makeSelectError, makeSelectForm, makeSelectSuccess };

@@ -9,8 +9,8 @@ const Input = styled.input`
   border: 1px solid;
   border-radius: 20px;
   outline: none;
-  border-color: ${props => props.value ? "#61a668" : "#f44336"};
-  box-shadow: 0 0 10px ${props => props.value ?  "#61a668" : "#f44336"};
+  border-color: ${props => props.value ? "#61a668" : "#cccccc"};
+  box-shadow: 0 0 10px ${props => props.value ?  "#61a668" : "#cccccc"};
 `;
 
 export default Input;

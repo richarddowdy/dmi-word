@@ -8,7 +8,7 @@ function StringList({ strings, loading, error }) {
     <>
       <Ul>
         {strings.map((str, idx) => {
-          return <ListItem className='text-primary' key={idx}>{str}</ListItem>;
+          return <ListItem className='text-primary' key={`stringList-${idx}`}>{str}</ListItem>;
         })}
       </Ul>
     </>
