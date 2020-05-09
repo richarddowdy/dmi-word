@@ -1,13 +1,13 @@
-import { defaultAction } from '../actions';
-import { DEFAULT_ACTION } from '../constants';
+import { changeInput } from '../actions';
+import { CHANGE_INPUT } from '../constants';
 
 describe('Form actions', () => {
-  describe('Default Action', () => {
-    it('has a type of DEFAULT_ACTION', () => {
+  describe('Change Input Action', () => {
+    it('has a type of CHANGE_INPUT', () => {
       const expected = {
-        type: DEFAULT_ACTION,
+        type: CHANGE_INPUT,
       };
-      expect(defaultAction()).toEqual(expected);
+      expect(changeInput()).toEqual(expected);
     });
   });
 });
