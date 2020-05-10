@@ -1,6 +1,6 @@
 /**
  *
- * Home
+ * Home Page
  *
  */
 
@@ -26,7 +26,7 @@ import H1 from '../../components/H1';
 import LoadingSpinner from '../../components/LoadingSpinner';
 import Alert from '../../components/Alert/index';
 
-export function Home({ strings, onPageLoad, handleDelete, deleteError }) {
+export function HomePage({ strings, onPageLoad, handleDelete, deleteError }) {
   useInjectReducer({ key: 'home', reducer });
   useInjectSaga({ key: 'home', saga });
 
@@ -57,7 +57,7 @@ export function Home({ strings, onPageLoad, handleDelete, deleteError }) {
   );
 }
 
-Home.propTypes = {
+HomePage.propTypes = {
   dispatch: PropTypes.func.isRequired,
   strings: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   deleteError: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
@@ -87,4 +87,4 @@ const withConnect = connect(
 export default compose(
   withConnect,
   memo,
-)(Home);
+)(HomePage);
