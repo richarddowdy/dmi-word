@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Form /> Should render and match the snapshot 1`] = `
+<div>
+  <form
+    class="Form-sc-197cms6-0 dAgUQH"
+  >
+    <label
+      for="newString"
+    >
+      Add a New Word or Phrase to the list!
+    </label>
+    <input
+      class="form-group Input-sc-16ykmnb-0 joywpR"
+      id="new-string"
+      placeholder="New Phrase!"
+      type="text"
+      value=""
+    />
+    <button
+      class="btn btn-primary"
+      type="submit"
+    >
+      Submit
+    </button>
+  </form>
+</div>
+`;

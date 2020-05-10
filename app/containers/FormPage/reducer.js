@@ -4,7 +4,11 @@
  *
  */
 import produce from 'immer';
-import { CHANGE_INPUT, ADD_STRINGS_FAIL, ADD_STRINGS_SUCCESS } from './constants';
+import {
+  CHANGE_INPUT,
+  ADD_STRINGS_FAIL,
+  ADD_STRINGS_SUCCESS,
+} from './constants';
 
 export const initialState = {
   newString: '',

@@ -10,34 +10,48 @@ import React from 'react';
 import { render } from 'react-testing-library';
 import { IntlProvider } from 'react-intl';
 import { Provider } from 'react-redux';
-import configureStore from '../../../configureStore';
 import { browserHistory } from 'react-router-dom';
+import configureStore from '../../../configureStore';
 
 // import 'jest-dom/extend-expect'; // add some helpful assertions
 
-import { Home } from '../index';
+import { HomePage } from '../index';
 import { DEFAULT_LOCALE } from '../../../i18n';
 
-describe('<Home />', () => {
+describe('<HomePage />', () => {
   let store;
 
   beforeAll(() => {
     store = configureStore({}, browserHistory);
   });
 
-  it.only('Expect to not log errors in console', () => {
+  it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     const dispatch = jest.fn();
+    const onPageLoad = jest.fn();
     render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <Home dispatch={dispatch} />
-      </IntlProvider>,
+      <Provider store={store}>
+        <IntlProvider locale={DEFAULT_LOCALE}>
+          <HomePage dispatch={dispatch} onPageLoad={onPageLoad} />
+        </IntlProvider>
+      </Provider>,
     );
     expect(spy).not.toHaveBeenCalled();
   });
 
-  it('Expect to have additional unit tests specified', () => {
-    expect(true).toEqual(false);
+  it('Should call onPageLoad when the page Loads', () => {
+    const spy = jest.spyOn(global.console, 'error');
+    const dispatch = jest.fn();
+    const onPageLoad = jest.fn();
+    render(
+      <Provider store={store}>
+        <IntlProvider locale={DEFAULT_LOCALE}>
+          <HomePage dispatch={dispatch} onPageLoad={onPageLoad} />
+        </IntlProvider>
+      </Provider>,
+    );
+    expect(onPageLoad).toHaveBeenCalled();
+    expect(spy).not.toHaveBeenCalled();
   });
 
   /**
@@ -45,13 +59,16 @@ describe('<Home />', () => {
    *
    * @see {@link https://jestjs.io/docs/en/api#testskipname-fn}
    */
-  it.skip('Should render and match the snapshot', () => {
+  it('Should render and match the snapshot', () => {
+    const onPageLoad = jest.fn();
     const {
       container: { firstChild },
     } = render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <Home />
-      </IntlProvider>,
+      <Provider store={store}>
+        <IntlProvider locale={DEFAULT_LOCALE}>
+          <HomePage onPageLoad={onPageLoad} />
+        </IntlProvider>
+      </Provider>,
     );
     expect(firstChild).toMatchSnapshot();
   });

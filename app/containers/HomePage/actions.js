@@ -10,7 +10,6 @@ import {
   DELETE_STRING,
   DELETE_FAIL,
   DELETE_SUCCESS,
-  RESET_SUCCESS,
 } from './constants';
 
 import { LOAD_STRINGS_FAIL } from '../FormPage/constants';

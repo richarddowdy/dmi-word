@@ -15,7 +15,7 @@ import { browserHistory } from 'react-router-dom';
 import configureStore from '../../../configureStore';
 
 
-import { Form } from '../index';
+import { FormPage } from '../index';
 import { DEFAULT_LOCALE } from '../../../i18n';
 
 describe('<Form />', () => {
@@ -29,9 +29,11 @@ describe('<Form />', () => {
     const spy = jest.spyOn(global.console, 'error');
     const dispatch = jest.fn();
     render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <Form dispatch={dispatch} />
-      </IntlProvider>,
+      <Provider store={store}>
+        <IntlProvider locale={DEFAULT_LOCALE}>
+          <FormPage dispatch={dispatch} />
+        </IntlProvider>
+      </Provider>,
     );
     expect(spy).not.toHaveBeenCalled();
   });
@@ -49,9 +51,11 @@ describe('<Form />', () => {
     const {
       container: { firstChild },
     } = render(
-      <IntlProvider locale={DEFAULT_LOCALE}>
-        <Form />
-      </IntlProvider>,
+      <Provider store={store}>
+        <IntlProvider locale={DEFAULT_LOCALE}>
+          <FormPage />
+        </IntlProvider>
+      </Provider>,
     );
     expect(firstChild).toMatchSnapshot();
   });

@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HomePage /> Should render and match the snapshot 1`] = `
+<div>
+  <header
+    class="Header-sc-1lzyagy-0 hXcZuE"
+  >
+    <h1
+      class="H1-tncdg6-0 gRRKTv"
+    >
+      The Lord of the 
+      <small>
+        st
+      </small>
+      <span
+        style="font-size: 90px;"
+      >
+        R
+      </span>
+      ings
+    </h1>
+  </header>
+  <section
+    class="Section-sc-1eulrsm-0 fuRJUh"
+  >
+    <div>
+      <i
+        class="fas fa-spinner fa-pulse fa-3x"
+      />
+    </div>
+  </section>
+</div>
+`;
