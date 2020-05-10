@@ -4,13 +4,18 @@
  *
  */
 import produce from 'immer';
-import { LOAD_STRINGS_SUCCESS, DELETE_SUCCESS, DELETE_FAIL } from './constants';
+import {
+  LOAD_STRINGS_SUCCESS,
+  DELETE_SUCCESS,
+  DELETE_FAIL,
+  RESET_SUCCESS,
+} from './constants';
 import { LOAD_STRINGS_FAIL } from '../FormPage/constants';
 
 export const initialState = {
-  strings: [],
-  success: false,
-  error: false,
+  strings: false,
+  deleteSuccess: false,
+  deleteError: false,
 };
 
 /* eslint-disable default-case, no-param-reassign */
@@ -27,11 +32,16 @@ const homeReducer = (state = initialState, action) =>
 
       case DELETE_SUCCESS:
         draft.strings = action.strings;
-        draft.success = true;
+        draft.deleteSuccess = 'Deleted Successfully';
         break;
 
       case DELETE_FAIL:
-        draft.error = action.error;
+        draft.error = 'Something went wrong. Unable to delete. Please try refreshing the page.';
+        break;
+
+      case RESET_SUCCESS:
+        draft.deleteSuccess = false;
+        break;
     }
   });
 

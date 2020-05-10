@@ -14,9 +14,13 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import { makeSelectStrings } from './selectors';
-// import { makeSelectStrings } from '../App/selectors';
-import { loadStrings, deleteString } from './actions';
+
+import {
+  makeSelectStrings,
+  makeSelectDeleteSuccess,
+  makeSelectDeleteError,
+} from './selectors';
+import { loadStrings, deleteString, resetSuccess } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
@@ -26,8 +30,16 @@ import StringList from '../../components/StringList/index';
 import Header from '../../components/Header';
 import H1 from '../../components/H1';
 import LoadingSpinner from '../../components/LoadingSpinner';
+import Alert from '../../components/Alert/index';
 
-export function Home({ strings, onPageLoad, handleDelete }) {
+export function Home({
+  strings,
+  onPageLoad,
+  handleDelete,
+  deleteSuccess,
+  deleteError,
+  resetSuccessAlert,
+}) {
   useInjectReducer({ key: 'home', reducer });
   useInjectSaga({ key: 'home', saga });
 
@@ -35,6 +47,7 @@ export function Home({ strings, onPageLoad, handleDelete }) {
     onPageLoad();
   }, []);
 
+  console.log(deleteSuccess)
   return (
     <div>
       <Helmet>
@@ -47,7 +60,13 @@ export function Home({ strings, onPageLoad, handleDelete }) {
         </H1>
       </Header>
       <Section>
-        {strings ? <StringList strings={strings} handleDelete={handleDelete} /> : <LoadingSpinner />}
+        {deleteError ? <Alert className="alert alert-warning">{deleteError}</Alert> : null}
+        {deleteSuccess ? <Alert className="alert alert-danger">{deleteSuccess}</Alert> : null}
+        {strings ? (
+          <StringList strings={strings} handleDelete={handleDelete} />
+        ) : (
+          <LoadingSpinner />
+        )}
       </Section>
     </div>
   );
@@ -55,13 +74,18 @@ export function Home({ strings, onPageLoad, handleDelete }) {
 
 Home.propTypes = {
   dispatch: PropTypes.func.isRequired,
-  strings: PropTypes.array,
+  strings: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
+  deleteSuccess: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  deleteError: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   onPageLoad: PropTypes.func,
   handleDelete: PropTypes.func,
+  resetSuccessAlert: PropTypes.func,
 };
-
+// TODO success and deleteError for feedback on delete
 const mapStateToProps = createStructuredSelector({
   strings: makeSelectStrings(),
+  deleteSuccess: makeSelectDeleteSuccess(),
+  deleteError: makeSelectDeleteError(),
 });
 
 function mapDispatchToProps(dispatch) {
@@ -69,6 +93,7 @@ function mapDispatchToProps(dispatch) {
     onPageLoad: () => dispatch(loadStrings()),
     handleDelete: evt =>
       dispatch(deleteString(evt.target.parentNode.textContent)),
+    resetSuccessAlert: () => {dispatch(resetSuccess())},
     dispatch,
   };
 }

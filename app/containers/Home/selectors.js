@@ -12,6 +12,8 @@ import { initialState } from './reducer';
  */
 
 const selectState = state => state.home || initialState;
+const selectSuccess = state => state.home || initialState;
+const selectError = state => state.home || initialState;
 
 /**
  * Default selector used by Home
@@ -29,4 +31,23 @@ const makeSelectStrings = () =>
     homeState => homeState.strings,
   );
 
-export { makeSelectStrings };
+const makeSelectDeleteSuccess = () =>
+  createSelector(
+    selectSuccess,
+    homeState => homeState.deleteSuccess,
+  );
+
+const makeSelectDeleteError = () =>
+  createSelector(
+    selectError,
+    homeState => homeState.error,
+  );
+
+export {
+  selectState,
+  selectSuccess,
+  selectError,
+  makeSelectStrings,
+  makeSelectDeleteSuccess,
+  makeSelectDeleteError,
+};

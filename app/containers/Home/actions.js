@@ -10,6 +10,7 @@ import {
   DELETE_STRING,
   DELETE_FAIL,
   DELETE_SUCCESS,
+  RESET_SUCCESS,
 } from './constants';
 
 import { LOAD_STRINGS_FAIL } from '../FormPage/constants';
@@ -52,5 +53,11 @@ export function deleteSuccess(strings) {
   return {
     type: DELETE_SUCCESS,
     strings,
+  };
+}
+
+export function resetSuccess() {
+  return {
+    type: RESET_SUCCESS,
   };
 }
