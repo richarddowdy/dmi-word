@@ -13,17 +13,34 @@ import { compose } from 'redux';
 
 import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
-import { makeSelectForm, makeSelectError, makeSelectSuccess } from './selectors';
+import {
+  makeSelectForm,
+  makeSelectError,
+  makeSelectSuccess,
+} from './selectors';
 import reducer from './reducer';
 import saga from './saga';
 
-import { changeInput, addNewString, stringSuccess, stringFailed } from './actions';
+import {
+  changeInput,
+  addNewString,
+  stringSuccess,
+  stringFailed,
+} from './actions';
 
 import Form from './Form';
 import Input from './Input';
 import Alert from '../../components/Alert/index';
 
-export function FormPage({ newString, handleChange, handleSubmit, error, success, resetSuccess, resetError }) {
+export function FormPage({
+  newString,
+  handleChange,
+  handleSubmit,
+  error,
+  success,
+  resetSuccess,
+  resetError,
+}) {
   useInjectReducer({ key: 'form', reducer });
   useInjectSaga({ key: 'form', saga });
 
@@ -67,6 +84,8 @@ FormPage.propTypes = {
   handleChange: PropTypes.func,
   error: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   success: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  resetSuccess: PropTypes.func,
+  resetError: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({

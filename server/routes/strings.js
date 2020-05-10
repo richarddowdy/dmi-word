@@ -44,7 +44,7 @@ router.post('/', async (req, res, next) => {
   try {
     const { newString } = req.body;
     strings.unshift(newString);
-    return res.json(strings);
+    return res.status(201).json(strings);
   } catch (err) {
     return next(err);
   }

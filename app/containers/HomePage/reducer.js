@@ -4,12 +4,7 @@
  *
  */
 import produce from 'immer';
-import {
-  LOAD_STRINGS_SUCCESS,
-  DELETE_SUCCESS,
-  DELETE_FAIL,
-  RESET_SUCCESS,
-} from './constants';
+import { LOAD_STRINGS_SUCCESS, DELETE_SUCCESS, DELETE_FAIL } from './constants';
 import { LOAD_STRINGS_FAIL } from '../FormPage/constants';
 
 export const initialState = {
