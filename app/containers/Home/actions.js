@@ -55,9 +55,3 @@ export function deleteSuccess(strings) {
     strings,
   };
 }
-
-export function resetSuccess() {
-  return {
-    type: RESET_SUCCESS,
-  };
-}

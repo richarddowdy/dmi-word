@@ -31,12 +31,6 @@ const makeSelectStrings = () =>
     homeState => homeState.strings,
   );
 
-const makeSelectDeleteSuccess = () =>
-  createSelector(
-    selectSuccess,
-    homeState => homeState.deleteSuccess,
-  );
-
 const makeSelectDeleteError = () =>
   createSelector(
     selectError,
@@ -48,6 +42,5 @@ export {
   selectSuccess,
   selectError,
   makeSelectStrings,
-  makeSelectDeleteSuccess,
   makeSelectDeleteError,
 };

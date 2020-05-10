@@ -14,7 +14,6 @@ import { LOAD_STRINGS_FAIL } from '../FormPage/constants';
 
 export const initialState = {
   strings: false,
-  deleteSuccess: false,
   deleteError: false,
 };
 
@@ -32,15 +31,10 @@ const homeReducer = (state = initialState, action) =>
 
       case DELETE_SUCCESS:
         draft.strings = action.strings;
-        draft.deleteSuccess = 'Deleted Successfully';
         break;
 
       case DELETE_FAIL:
         draft.error = 'Something went wrong. Unable to delete. Please try refreshing the page.';
-        break;
-
-      case RESET_SUCCESS:
-        draft.deleteSuccess = false;
         break;
     }
   });
