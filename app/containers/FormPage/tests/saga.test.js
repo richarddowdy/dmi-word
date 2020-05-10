@@ -3,13 +3,13 @@
  */
 
 /* eslint-disable redux-saga/yield-effects */
-import { take, call, put, select } from 'redux-saga/effects';
-import formSaga from '../saga';
+import { take, call, put, select, takeLatest } from 'redux-saga/effects';
+// import formSaga from '../saga';
 
-import { ADD_NEW_STRING, LOAD_STRINGS_SUCCESS } from '../saga';
+import { ADD_NEW_STRING, LOAD_STRINGS_SUCCESS } from '../constants';
 import { addNewString, stringAdd, stringFailed, stringSuccess } from '../actions';
 
-import { addString } from '../saga';
+import formSaga, { addString } from '../saga';
 
 // const generator = formSaga();
 
@@ -35,4 +35,14 @@ describe('formSaga Saga', () => {
     console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!", putDescriptor);
     expect(putDescriptor).toEqual(put(stringAdd(string)));
   });
+
 });
+
+describe('form saga', () => {
+  const testFormSaga = formSaga();
+
+  it('should watch for ADD_NEW_STRING action', () => {
+    const takeLatestDescriptor = testFormSaga.next().value;
+    expect(takeLatestDescriptor).toEqual(takeLatest(ADD_NEW_STRING, addString));
+  });
+})

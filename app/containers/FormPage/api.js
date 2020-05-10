@@ -1,11 +1,13 @@
 import axios from 'axios';
 
-async function addNewStringsApi(string){
-  try{
-    const response = await axios.post('http://localhost:3000/api/strings', { newString: string })
+const BASE_URL = 'http://localhost:3000/api/strings';
+
+async function addNewStringsApi(string) {
+  try {
+    const response = await axios.post(BASE_URL, { newString: string })
     return response.data;
   } catch (err) {
-    console.log(err);
+    return err;
   }
 }
 

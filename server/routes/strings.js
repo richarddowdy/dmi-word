@@ -46,4 +46,19 @@ router.post('/', async (req, res, next) => {
   }
 });
 
+/**
+ * DELETE /delete
+ * Returns:
+ * => string array without the deleted string
+ */
+router.delete('/delete', async (req, res, next) => {
+  try {
+    const { string } = req.body;
+    strings.splice(strings.indexOf(string), 1);
+    return res.json(strings);
+  } catch (err) {
+    return next(err);
+  }
+});
+
 module.exports = router;

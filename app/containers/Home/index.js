@@ -16,7 +16,7 @@ import { useInjectSaga } from 'utils/injectSaga';
 import { useInjectReducer } from 'utils/injectReducer';
 import { makeSelectStrings } from './selectors';
 // import { makeSelectStrings } from '../App/selectors';
-import { loadStrings } from './actions';
+import { loadStrings, deleteString } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 import messages from './messages';
@@ -27,7 +27,7 @@ import Header from '../../components/Header';
 import H1 from '../../components/H1';
 import LoadingSpinner from '../../components/LoadingSpinner';
 
-export function Home({ strings, onPageLoad }) {
+export function Home({ strings, onPageLoad, handleDelete }) {
   useInjectReducer({ key: 'home', reducer });
   useInjectSaga({ key: 'home', saga });
 
@@ -47,7 +47,7 @@ export function Home({ strings, onPageLoad }) {
         </H1>
       </Header>
       <Section>
-        {strings ? <StringList strings={strings} /> : <LoadingSpinner />}
+        {strings ? <StringList strings={strings} handleDelete={handleDelete} /> : <LoadingSpinner />}
       </Section>
     </div>
   );
@@ -57,6 +57,7 @@ Home.propTypes = {
   dispatch: PropTypes.func.isRequired,
   strings: PropTypes.array,
   onPageLoad: PropTypes.func,
+  handleDelete: PropTypes.func,
 };
 
 const mapStateToProps = createStructuredSelector({
@@ -66,6 +67,8 @@ const mapStateToProps = createStructuredSelector({
 function mapDispatchToProps(dispatch) {
   return {
     onPageLoad: () => dispatch(loadStrings()),
+    handleDelete: evt =>
+      dispatch(deleteString(evt.target.parentNode.textContent)),
     dispatch,
   };
 }

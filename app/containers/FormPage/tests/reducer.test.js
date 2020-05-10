@@ -43,7 +43,7 @@ describe('formReducer', () => {
     const expectedResult = produce(state, draft => {
       draft.newString = '';
       draft.error = false;
-      draft.success = "Success";
+      draft.success = 'Success';
     });
 
     expect(formReducer(state, stringSuccess('Success'))).toEqual(expectedResult);

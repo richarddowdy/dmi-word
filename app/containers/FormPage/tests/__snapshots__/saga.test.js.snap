@@ -1,29 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`formSaga Saga Expect to have unit tests specified 1`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "combinator": false,
-  "payload": Object {
-    "args": Array [],
-    "selector": [Function],
-  },
-  "type": "SELECT",
-}
-`;
-
-exports[`formSaga Saga Expect to have unit tests specified 2`] = `
-Object {
-  "@@redux-saga/IO": true,
-  "combinator": false,
-  "payload": Object {
-    "args": Array [],
-    "selector": [Function],
-  },
-  "type": "SELECT",
-}
-`;
-
 exports[`formSaga Saga should dispatch the loadStringsSuccess action if the request is successfull 1`] = `
 Object {
   "@@redux-saga/IO": true,
