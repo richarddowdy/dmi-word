@@ -1,20 +1,7 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
-/**
- * Direct selector to the form state domain
- */
-
 const selectForm = state => state.form || initialState;
-const selectSuccess = state => state.form || initialState;
-const selectError = state => state.form || initialState;
-/**
- * Other specific selectors
- */
-
-/**
- * Default selector used by Form
- */
 
 const makeSelectForm = () =>
   createSelector(
@@ -24,23 +11,14 @@ const makeSelectForm = () =>
 
 const makeSelectSuccess = () =>
   createSelector(
-    selectSuccess,
+    selectForm,
     formState => formState.success,
   );
 
 const makeSelectError = () =>
   createSelector(
-    selectError,
+    selectForm,
     formState => formState.error,
   );
 
-
-// export default makeSelectForm;
-// export { selectForm, makeSelectForm };
-export {
-  selectForm,
-  selectError,
-  makeSelectError,
-  makeSelectForm,
-  makeSelectSuccess,
-};
+export { selectForm, makeSelectError, makeSelectForm, makeSelectSuccess };

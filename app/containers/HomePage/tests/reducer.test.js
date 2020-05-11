@@ -1,13 +1,14 @@
-// import produce from 'immer';
+import produce from 'immer';
 import homeReducer from '../reducer';
-// import { someAction } from '../actions';
+import { stringsLoaded, stringsFailed, deleteFailed } from '../actions';
 
 /* eslint-disable default-case, no-param-reassign */
 describe('homeReducer', () => {
   let state;
   beforeEach(() => {
     state = {
-      // default state params here
+      strings: false,
+      deleteError: false,
     };
   });
 
@@ -16,17 +17,29 @@ describe('homeReducer', () => {
     expect(homeReducer(undefined, {})).toEqual(expectedResult);
   });
 
-  /**
-   * Example state change comparison
-   *
-   * it('should handle the someAction action correctly', () => {
-   *   const expectedResult = produce(state, draft => {
-   *     draft.loading = true;
-   *     draft.error = false;
-   *     draft.userData.nested = false;
-   *   });
-   *
-   *   expect(appReducer(state, someAction())).toEqual(expectedResult);
-   * });
-   */
+  it('should handle stringsLoaded correctly', () => {
+    const expectedResult = produce(state, draft => {
+      draft.strings = ['one', 'two', 'three'];
+      draft.deleteError = false;
+    });
+
+    expect(homeReducer(state, stringsLoaded(['one', 'two', 'three']))).toEqual(expectedResult);
+  });
+
+  it('should handle stringsFailed correctly', () => {
+    const expectedResult = produce(state, draft => {
+      draft.strings = false;
+      draft.deleteError = 'Error';
+    });
+    expect(homeReducer(state, stringsFailed('Error'))).toEqual(expectedResult);
+  });
+
+  it('should handle deleteFailed correctly', () => {
+    const expectedResult = produce(state, draft => {
+      draft.strings = false;
+      draft.deleteError = 'Something went wrong. Unable to delete. Please try refreshing the page.';
+    });
+
+    expect(homeReducer(state, deleteFailed())).toEqual(expectedResult);
+  });
 });

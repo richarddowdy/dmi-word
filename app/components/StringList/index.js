@@ -31,5 +31,5 @@ function StringList({ strings, handleDelete }) {
 StringList.propTypes = {
   strings: PropTypes.array,
   handleDelete: PropTypes.func,
-}
+};
 export default StringList;

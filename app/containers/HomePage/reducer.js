@@ -21,7 +21,7 @@ const homeReducer = (state = initialState, action) =>
         break;
 
       case LOAD_STRINGS_FAIL:
-        draft.error = action.error;
+        draft.deleteError = action.error;
         break;
 
       case DELETE_SUCCESS:
@@ -29,7 +29,7 @@ const homeReducer = (state = initialState, action) =>
         break;
 
       case DELETE_FAIL:
-        draft.error = 'Something went wrong. Unable to delete. Please try refreshing the page.';
+        draft.deleteError = 'Something went wrong. Unable to delete. Please try refreshing the page.';
         break;
     }
   });

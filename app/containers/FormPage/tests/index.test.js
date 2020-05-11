@@ -14,7 +14,6 @@ import { Provider } from 'react-redux';
 import { browserHistory } from 'react-router-dom';
 import configureStore from '../../../configureStore';
 
-
 import { FormPage } from '../index';
 import { DEFAULT_LOCALE } from '../../../i18n';
 
@@ -37,10 +36,6 @@ describe('<Form />', () => {
     );
     expect(spy).not.toHaveBeenCalled();
   });
-
-  // it('Expect to have additional unit tests specified', () => {
-  //   expect(true).toEqual(false);
-  // });
 
   /**
    * Unskip this test to use it

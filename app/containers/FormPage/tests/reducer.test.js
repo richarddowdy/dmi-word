@@ -7,7 +7,6 @@ describe('formReducer', () => {
   let state;
   beforeEach(() => {
     state = {
-      // default state params here
       newString: '',
       error: false,
       success: false,

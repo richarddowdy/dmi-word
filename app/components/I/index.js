@@ -4,6 +4,6 @@ const I = styled.i`
   &:hover {
     cursor: pointer;
   }
-`
+`;
 
 export default I;
