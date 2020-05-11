@@ -58,7 +58,6 @@ export function HomePage({ strings, onPageLoad, handleDelete, deleteError }) {
 }
 
 HomePage.propTypes = {
-  dispatch: PropTypes.func.isRequired,
   strings: PropTypes.oneOfType([PropTypes.array, PropTypes.bool]),
   deleteError: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
   onPageLoad: PropTypes.func,

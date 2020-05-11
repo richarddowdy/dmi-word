@@ -20,8 +20,8 @@ const app = express();
 
 // If you need a backend, e.g. an API, add your custom backend-specific middleware here
 // app.use('/api', myApi);
-app.use(bodyParser.json()); // allows me to parse the body of a reqest as json
 
+app.use(bodyParser.json()); // allows me to parse the body of a reqest as json
 app.use('/api/strings', stringsRoutes); // connects the GET and POST endpoints for 'strings'
 app.use(cors());
 
@@ -74,8 +74,6 @@ app.use((req, res, next) => {
 /** Generic error handler. */
 
 app.use((err, req, res, next) => {
-  if (err.stack) console.error(err.stack);
-
   res.status(err.status || 500).json({
     message: err.message,
   });

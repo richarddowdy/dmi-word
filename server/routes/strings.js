@@ -17,11 +17,16 @@ const strings = [
  * GET /
  * Returns:
  * => [
- *     'This is an array of strings.',
- *     'Silly, silly strings',
- *     'One String to rule them all'
- *     ]
+ *    'Three stRings for the Elven-kings under the sky.',
+ *    'Seven for the Dwarf-lords in their halls of stone.',
+ *    'Nine for Mortal Men doomed to die.',
+ *    'One for the Dark Lord on his dark throne.',
+ *    'In the Land of Mordor where the Shadows lie.',
+ *    'One stRing to rule them all, One stRing to find them.',
+ *    'One stRing to bring them all, and in the darkness bind them.',
+ *  ]
  */
+
 router.get('/', async (req, res, next) => {
   try {
     return res.json(strings);
@@ -34,11 +39,15 @@ router.get('/', async (req, res, next) => {
  * POST /
  * Returns:
  * => [
- *     'NEWLY ADDED STRING!!!!',
- *     'This is an array of strings.',
- *     'Silly, silly strings',
- *     'One String to rule them all'
- *     ]
+ *    'NEWLY ADDED STRING',
+ *    'Three stRings for the Elven-kings under the sky.',
+ *    'Seven for the Dwarf-lords in their halls of stone.',
+ *    'Nine for Mortal Men doomed to die.',
+ *    'One for the Dark Lord on his dark throne.',
+ *    'In the Land of Mordor where the Shadows lie.',
+ *    'One stRing to rule them all, One stRing to find them.',
+ *    'One stRing to bring them all, and in the darkness bind them.',
+ *  ]
  */
 router.post('/', async (req, res, next) => {
   try {

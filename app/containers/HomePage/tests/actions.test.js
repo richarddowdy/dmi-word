@@ -1,4 +1,10 @@
-import { loadStrings, stringsLoaded, deleteString, deleteFailed, deleteSuccess } from '../actions';
+import {
+  loadStrings,
+  stringsLoaded,
+  deleteString,
+  deleteFailed,
+  deleteSuccess,
+} from '../actions';
 import {
   REQUEST_API_STRINGS,
   LOAD_STRINGS_SUCCESS,

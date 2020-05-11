@@ -3,19 +3,9 @@
  */
 
 /* eslint-disable redux-saga/yield-effects */
-import { take, call, put, select } from 'redux-saga/effects';
-import homeSaga, { getApiStrings } from '../saga';
-import { REQUEST_API_STRINGS, DELETE_STRING, LOAD_STRINGS_SUCCESS } from '../constants';
-import { stringsLoaded } from '../actions';
+import { put } from 'redux-saga/effects';
+import { getApiStrings } from '../saga';
 import { stringFailed } from '../../FormPage/actions';
-
-// const generator = homeSaga();
-
-// describe('homeSaga Saga', () => {
-//   it('Expect to have unit tests specified', () => {
-//     expect(true).toEqual(false);
-//   });
-// });
 
 const strings = ['one', 'two', 'three'];
 

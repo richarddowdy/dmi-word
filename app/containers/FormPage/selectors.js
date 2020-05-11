@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 import { initialState } from './reducer';
 
+// Allows for access to form key in the state tree
 const selectForm = state => state.form || initialState;
 
 const makeSelectForm = () =>

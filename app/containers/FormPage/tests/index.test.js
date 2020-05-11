@@ -23,7 +23,7 @@ describe('<Form />', () => {
   beforeAll(() => {
     store = configureStore({}, browserHistory);
   });
-  
+
   it('Expect to not log errors in console', () => {
     const spy = jest.spyOn(global.console, 'error');
     const dispatch = jest.fn();
@@ -38,8 +38,6 @@ describe('<Form />', () => {
   });
 
   /**
-   * Unskip this test to use it
-   *
    * @see {@link https://jestjs.io/docs/en/api#testskipname-fn}
    */
   it('Should render and match the snapshot', () => {
