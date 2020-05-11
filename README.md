@@ -12,3 +12,4 @@ This app allows users to add strings (with an input field on the Form page) to a
 
 ```npm run start``` - starts the application on localhost:3000
 
+```jest``` - runs all automated tests
